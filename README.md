@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# Scalable React Apps Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, scalable React application template built with Vite, TypeScript, and ESLint.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have the following installed on your system:
 
-## React Compiler
+- **Node.js**: Version 20 or higher
+- **Yarn**: Package manager
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Installing Prerequisites
 
-## Expanding the ESLint configuration
+#### Node.js (v20+)
+- Download and install from [nodejs.org](https://nodejs.org/)
+- Or use a version manager like [nvm](https://github.com/nvm-sh/nvm):
+  ```bash
+  nvm install 20
+  nvm use 20
+  ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+#### Yarn
+- Install globally via npm:
+  ```bash
+  npm install -g yarn
+  ```
+- Or install via package manager:
+  ```bash
+  # macOS (with Homebrew)
+  brew install yarn
+  
+  # Ubuntu/Debian
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt update && sudo apt install yarn
+  ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository** (if not already done):
+   ```bash
+   git clone <repository-url>
+   cd scalable-react-apps-template
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install dependencies**:
+   ```bash
+   yarn install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   yarn dev
+   ```
+
+4. **Open your browser** and navigate to `http://localhost:5173`
+
+## Available Scripts
+
+- `yarn dev` - Start the development server
+- `yarn build` - Build the project for production
+- `yarn lint` - Run ESLint to check for code quality issues
+- `yarn preview` - Preview the production build locally
+
+## Tech Stack
+
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **ESLint** - Code linting
+- **SWC** - Fast compilation
+
+## Project Structure
+
+```
+src/
+├── assets/          # Static assets
+├── App.tsx         # Main application component
+├── App.css         # Application styles
+├── main.tsx        # Application entry point
+└── index.css       # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The development server will automatically reload when you make changes to the source files. The application uses hot module replacement (HMR) for a smooth development experience.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Building for Production
+
+To create a production build:
+
+```bash
+yarn build
 ```
+
+The built files will be in the `dist` directory.
+
+## Contributing
+
+1. Make your changes
+2. Run `yarn lint` to check for any linting issues
+3. Test your changes with `yarn dev`
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
