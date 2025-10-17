@@ -101,7 +101,3 @@ The built files will be in the `dist` directory.
 2. Run `yarn lint` to check for any linting issues
 3. Test your changes with `yarn dev`
 4. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
