@@ -1,0 +1,30 @@
+.card {
+  background-color: var(--color-surface-base);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  transition: all 0.3s ease;
+}
+
+/* Variants */
+.default {
+  border: 1px solid var(--color-border-base);
+}
+
+.elevated {
+  box-shadow: var(--shadow-md);
+  border: none;
+}
+
+.elevated:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.outlined {
+  border: 2px solid var(--color-border-base);
+}
+
+.outlined:hover {
+  border-color: var(--color-accent-base);
+}
+

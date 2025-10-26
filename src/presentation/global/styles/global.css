@@ -1,0 +1,192 @@
+/* Global CSS Variables and Reset */
+
+/* Font Families */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* ===== THEME SYSTEM ===== */
+
+/* Base Tokens - Light Mode */
+:root {
+  /* Background Colors */
+  --color-bg-base: #ffffff;                 /* Main background */
+  --color-bg-light: #f7f7f8;                /* Light backgrounds */
+  --color-bg-dark: #e2e2e5;                 /* Dark backgrounds */
+  
+  /* Surface Colors */
+  --color-surface-base: #ffffff;             /* Cards, modals */
+  --color-surface-muted: #f0f0f3;            /* Subtle surfaces */
+  
+  /* Text Colors */
+  --color-text-base: #1a1a1a;               /* Main text */
+  --color-text-muted: #666666;              /* Muted text */
+  --color-text-inverse: #ffffff;            /* Text on dark backgrounds */
+  
+  /* Border Colors */
+  --color-border-base: #e2e2e5;              /* Main borders */
+  --color-border-light: #f0f0f3;            /* Light borders */
+  
+  /* Accent Colors - Default Purple Theme */
+  --color-accent-base: #7b61ff;              /* Base accent */
+  --color-accent-light: #a091ff;             /* Light accent */
+  --color-accent-dark: #5236e2;              /* Dark accent */
+  --color-accent-hover: var(--color-accent-dark);
+  --color-accent-disabled: #c7baff;          /* Disabled accent */
+  
+  /* State Colors */
+  --color-success-base: #10b981;
+  --color-success-light: #d1fae5;
+  --color-warning-base: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-error-base: #ef4444;
+  --color-error-light: #fee2e2;
+  --color-info-base: #3b82f6;
+  --color-info-light: #dbeafe;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  /* Background Colors */
+  --color-bg-base: #121212;                 /* Dark main background */
+  --color-bg-light: #1e1e1e;                /* Dark light backgrounds */
+  --color-bg-dark: #2a2a2a;                 /* Dark dark backgrounds */
+  
+  /* Surface Colors */
+  --color-surface-base: #1e1e1e;             /* Dark cards */
+  --color-surface-muted: #2a2a2a;           /* Dark subtle surfaces */
+  
+  /* Text Colors */
+  --color-text-base: #ffffff;               /* Light main text */
+  --color-text-muted: #a0a0a0;              /* Light muted text */
+  --color-text-inverse: #1a1a1a;            /* Text on light backgrounds */
+  
+  /* Border Colors */
+  --color-border-base: #2a2a2a;             /* Dark borders */
+  --color-border-light: #3a3a3a;            /* Dark light borders */
+  
+  /* Accent colors remain the same for consistency */
+  --color-accent-disabled: #4c1d95;         /* Adjusted for dark mode */
+}
+
+/* ===== COLOR THEMES ===== */
+
+/* Purple Theme (Default) */
+:root[data-theme-color="purple"] {
+  --color-accent-base: #7b61ff;
+  --color-accent-light: #a091ff;
+  --color-accent-dark: #5236e2;
+  --color-accent-disabled: #c7baff;
+}
+
+/* Green Theme */
+:root[data-theme-color="green"] {
+  --color-accent-base: #10b981;
+  --color-accent-light: #34d399;
+  --color-accent-dark: #059669;
+  --color-accent-disabled: #6ee7b7;
+}
+
+/* Teal Theme */
+:root[data-theme-color="teal"] {
+  --color-accent-base: #14b8a6;
+  --color-accent-light: #5eead4;
+  --color-accent-dark: #0d9488;
+  --color-accent-disabled: #99f6e4;
+}
+
+/* Font Sizes */
+:root {
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+}
+
+/* Spacings */
+:root {
+  --spacing-xs: 0.25rem;      /* 4px */
+  --spacing-sm: 0.5rem;       /* 8px */
+  --spacing-md: 1rem;         /* 16px */
+  --spacing-lg: 1.5rem;       /* 24px */
+  --spacing-xl: 2rem;         /* 32px */
+}
+
+/* Borders */
+:root {
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  
+  --border-radius-sm: 0.25rem;   /* 4px */
+  --border-radius-md: 0.5rem;     /* 8px */
+  --border-radius-lg: 0.75rem;    /* 12px */
+  --border-radius-xl: 1rem;       /* 16px */
+  --border-radius-full: 9999px;
+}
+
+/* Shadows */
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Global Reset and Defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: inherit;
+  color: var(--color-text-base);
+  background-color: var(--color-bg-base);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+/* ===== USAGE EXAMPLES ===== */
+
+/*
+THEME SWITCHING EXAMPLES:
+
+1. Switch to dark mode:
+   document.documentElement.dataset.theme = "dark";
+
+2. Switch to green color theme:
+   document.documentElement.dataset.themeColor = "green";
+
+3. Combine both:
+   document.documentElement.dataset.theme = "dark";
+   document.documentElement.dataset.themeColor = "green";
+
+AVAILABLE THEMES:
+- Light/Dark: data-theme="light" | data-theme="dark"
+- Colors: data-theme-color="purple" | "green" | "teal"
+
+CSS VARIABLE USAGE:
+.my-component {
+  background-color: var(--color-bg-base);        
+  color: var(--color-text-base);                 
+  border: 1px solid var(--color-border-base);    
+}
+*/

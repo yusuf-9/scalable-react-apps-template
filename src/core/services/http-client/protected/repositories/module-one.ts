@@ -1,5 +1,5 @@
 import { type HttpClientAdapter } from "../adapter";
-import { type ModuleOneItem } from "../../types/module-one";
+import { type ModuleOneItem } from "@/core/types/module-one";
 
 export class ModuleOneRepository {
   private readonly baseUrl = "/api/module-one";
@@ -11,25 +11,25 @@ export class ModuleOneRepository {
     const response = await this.adapter.get<{ items: ModuleOneItem[]; total: number; page: number; limit: number }>(
       `${this.baseUrl}?page=${page}&limit=${limit}`
     );
-    return response.data;
+    return response.data.data;
   }
 
   // Get item by ID
   async getById(id: string): Promise<ModuleOneItem> {
     const response = await this.adapter.get<ModuleOneItem>(`${this.baseUrl}/${id}`);
-    return response.data;
+    return response.data.data;
   }
 
   // Create new item
   async create(data: { name: string; description: string }): Promise<ModuleOneItem> {
     const response = await this.adapter.post<ModuleOneItem>(this.baseUrl, data);
-    return response.data;
+    return response.data.data;
   }
 
   // Update item by ID
   async update(id: string, data: { name?: string; description?: string }): Promise<ModuleOneItem> {
     const response = await this.adapter.put<ModuleOneItem>(`${this.baseUrl}/${id}`, data);
-    return response.data;
+    return response.data.data;
   }
 
   // Delete item by ID
@@ -37,3 +37,4 @@ export class ModuleOneRepository {
     await this.adapter.delete(`${this.baseUrl}/${id}`);
   }
 }
+

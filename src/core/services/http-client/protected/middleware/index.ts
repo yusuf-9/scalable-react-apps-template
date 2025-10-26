@@ -1,5 +1,5 @@
 import { type InternalAxiosRequestConfig, type AxiosResponse } from "axios";
-import LocalStorageManager from "../../local-storage-manager";
+import LocalStorageManager from "../../../local-storage-manager";
 
 interface Middleware {
   onRequest?: (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>;
@@ -7,58 +7,11 @@ interface Middleware {
   onError?: (error: unknown) => unknown;
 }
 
-class LoggingMiddleware implements Middleware {
-  onRequest(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig {
-    console.log(`[HTTP Request] ${config.method?.toUpperCase()} ${config.url}`, {
-      headers: config.headers,
-      data: config.data,
-    });
-    return config;
-  }
-
-  onResponse(response: AxiosResponse): AxiosResponse {
-    console.log(`[HTTP Response] ${response.status} ${response.config.url}`, {
-      data: response.data,
-      headers: response.headers,
-    });
-    return response;
-  }
-
-  onError(error: unknown): unknown {
-    const errorInfo: Record<string, unknown> = {};
-    
-    if (error && typeof error === 'object') {
-      if ('config' in error) {
-        const config = (error as { config?: { url?: string; method?: string } }).config;
-        if (config) {
-          errorInfo.url = config.url;
-          errorInfo.method = config.method;
-        }
-      }
-      
-      if ('response' in error) {
-        const response = (error as { response?: { status?: number; data?: unknown } }).response;
-        if (response) {
-          errorInfo.status = response.status;
-          errorInfo.data = response.data;
-        }
-      }
-    }
-    
-    console.error(`[HTTP Error] ${error instanceof Error ? error.message : 'Unknown error'}`, errorInfo);
-    return error;
-  }
-}
-
 class AuthMiddleware implements Middleware {
   private localStorageManager: LocalStorageManager;
 
   constructor(localStorageManager: LocalStorageManager) {
     this.localStorageManager = localStorageManager;
-  }
-
-  setToken(token: string): void {
-    this.localStorageManager.set('USER_TOKEN', token);
   }
 
   onRequest(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig {
@@ -103,8 +56,8 @@ class ErrorHandlingMiddleware implements Middleware {
 }
 
 export {
-  LoggingMiddleware,
   AuthMiddleware,
   ErrorHandlingMiddleware,
   type Middleware,
 }
+

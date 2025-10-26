@@ -1,6 +1,5 @@
 
 import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse, isAxiosError } from "axios";
-import { type Middleware } from "../middleware";
 
 export interface HttpClientAdapter {
   get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<{ data: T }>>;
@@ -11,8 +10,6 @@ export interface HttpClientAdapter {
 
 export class HttpAdapter implements HttpClientAdapter {
   private axiosInstance: AxiosInstance;
-  public middlewares: Middleware[] = [];
-  private interceptorsSetup: boolean = false;
 
   constructor() {
     this.axiosInstance = axios.create({
@@ -20,74 +17,6 @@ export class HttpAdapter implements HttpClientAdapter {
     });
   }
 
-  public addMiddleware(middleware: Middleware): void {
-    this.middlewares.push(middleware);
-  }
-
-  public removeMiddleware(middleware: Middleware): void {
-    const index = this.middlewares.indexOf(middleware);
-    if (index > -1) {
-      this.middlewares.splice(index, 1);
-    }
-  }
-
-  public setupInterceptors(): void {
-    // Prevent duplicate interceptor setup
-    if (this.interceptorsSetup) {
-      return;
-    }
-
-    // Request interceptor
-    this.axiosInstance.interceptors.request.use(
-      async (config) => {
-        let processedConfig = config;
-        
-        for (const middleware of this.middlewares) {
-          if (middleware.onRequest) {
-            processedConfig = await middleware.onRequest(processedConfig);
-          }
-        }
-        
-        return processedConfig;
-      },
-      (error) => {
-        for (const middleware of this.middlewares) {
-          if (middleware.onError) {
-            middleware.onError(error);
-          }
-        }
-        return Promise.reject(error);
-      }
-    );
-
-    // Response interceptor
-    this.axiosInstance.interceptors.response.use(
-      async (response) => {
-        let processedResponse = response;
-        
-        for (const middleware of this.middlewares) {
-          if (middleware.onResponse) {
-            processedResponse = await middleware.onResponse(processedResponse);
-          }
-        }
-        
-        return processedResponse;
-      },
-      async (error) => {
-        let processedError = error;
-        
-        for (const middleware of this.middlewares) {
-          if (middleware.onError) {
-            processedError = await middleware.onError(processedError);
-          }
-        }
-        
-        return Promise.reject(processedError);
-      }
-    );
-
-    this.interceptorsSetup = true;
-  }
 
   // GET request method
   public async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<{ data: T }>> {
@@ -143,3 +72,4 @@ export class HttpAdapter implements HttpClientAdapter {
 }
 
 export default HttpAdapter;
+

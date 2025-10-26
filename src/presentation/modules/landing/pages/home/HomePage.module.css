@@ -1,0 +1,162 @@
+.main {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Hero Section */
+.hero {
+  padding: calc(var(--spacing-xl) * 4) 0 calc(var(--spacing-xl) * 3);
+  background: linear-gradient(135deg, var(--color-bg-base) 0%, var(--color-bg-light) 100%);
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-text-base);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.2;
+}
+
+.highlight {
+  color: var(--color-accent-base);
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.heroCta {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Buttons */
+.btnPrimary {
+  background-color: var(--color-accent-base);
+  color: var(--color-text-inverse);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btnPrimary:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: var(--color-text-base);
+  border: 2px solid var(--color-border-base);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnSecondary:hover {
+  border-color: var(--color-accent-base);
+  color: var(--color-accent-base);
+  transform: translateY(-2px);
+}
+
+/* Section */
+.section {
+  padding: calc(var(--spacing-xl) * 3) 0;
+  background-color: var(--color-bg-base);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-base);
+  margin-bottom: calc(var(--spacing-xl) * 2);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.card {
+  background-color: var(--color-surface-base);
+  border: 1px solid var(--color-border-base);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.card h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-base);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: calc(var(--spacing-xl) * 3) 0;
+  background-color: var(--color-accent-base);
+  text-align: center;
+}
+
+.ctaSection h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-inverse);
+  margin-bottom: var(--spacing-md);
+}
+
+.ctaSection p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-inverse);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+}
+
+.ctaSection .btnPrimary {
+  background-color: var(--color-text-inverse);
+  color: var(--color-accent-base);
+}
+
+.ctaSection .btnPrimary:hover {
+  background-color: var(--color-bg-light);
+}
+
